@@ -1,0 +1,47 @@
+{% extends 'index.html' %}
+
+
+{% block title %}DASHBOARD{% endblock %}
+
+{% block content %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="#">Home</a></li>
+    <li class="breadcrumb-item"><a href="#">Login</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+  </ol>
+</nav>
+<div class="container">
+<a href="add_client"><button type="button" class="btn btn-outline-dark" style="display:block;margin-left:auto;">Add Clients</button></a>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+  <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+  {% endwith %}
+  <br>
+  <div class="jumbotron">
+    {% for i in data %}
+      <div class="card">
+  <div class="card-body">
+    <h3>Client Details</h3>
+    <hr>
+    <p style="font-family:bold;font-weight:bold;">Email-ID: {{i[1]}}</p>
+    <p style="font-family:bold;font-weight:bold;">Door No: {{i[2]}}</p>
+    <p style="font-family:bold;font-weight:bold;">Address: {{i[3]}}</p>
+    <p style="font-family:bold;font-weight:bold;">Phone No: {{i[4]}}</p>
+    <p style="font-family:bold;font-weight:bold;">city: {{i[5]}}</p>
+    <p style="font-family:bold;font-weight:bold;">state: {{i[6]}}</p>
+    <p style="font-family:bold;font-weight:bold;">pincode: {{i[7]}}</p>
+    <a href="client/{{i[0]}}"><button type="submit" class="btn btn-outline-primary">Edit</button></a>
+    <a href="receipt/{{i[0]}}"><button type="submit" class="btn btn-outline-primary">Receipt</button></a>
+  </div>
+</div>
+    <br>
+    {% endfor %}
+  </div>
+</div>
+  {% endblock %}
