@@ -1,0 +1,1 @@
+# rent_mang_flask
